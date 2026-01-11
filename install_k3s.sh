@@ -11,3 +11,14 @@ EOF
 
 ufw disable
 # TODO allow ports
+
+# TODO check available memory
+# TODO check available CPU cores
+
+echo "Ensuring curl is installed on system."
+apt update && apt install -y curl
+
+curl -sfL https://get.k3s.io | sh -
+
+systemctl status k3s
+
