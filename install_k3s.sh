@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 echo "Starting k3s installation..."
 
 cat << EOF
@@ -7,6 +9,7 @@ cat << EOF
 ---
 Turning off the UFW firewall (recommended by k3s)
 ---
+
 EOF
 
 ufw disable
@@ -15,10 +18,32 @@ ufw disable
 # TODO check available memory
 # TODO check available CPU cores
 
-echo "Ensuring curl is installed on system."
+cat << EOF
+
+---
+Ensuring curl is installed on system.
+---
+
+EOF
+
 apt update && apt install -y curl
 
+cat << EOF
+
+---
+Starting k3s' official installation script (ref: https://get.k3s.io)
+---
+
+EOF
 curl -sfL https://get.k3s.io | sh -
 
-systemctl status k3s
+cat << EOF
+
+---
+Ensuring k3s installed correctly and it's service is active
+---
+
+EOF
+
+echo "k3s service status:" $(systemctl is-active k3s)
 
