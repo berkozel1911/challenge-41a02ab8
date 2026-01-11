@@ -37,13 +37,7 @@ Starting k3s' official installation script (ref: https://get.k3s.io)
 EOF
 curl -sfL https://get.k3s.io | sh -
 
-cat << EOF
-
----
-Ensuring k3s installed correctly and it's service is active
----
-
-EOF
-
+echo "---"
+echo "Checking k3s service after the installation."
 echo "k3s service status:" $(systemctl is-active k3s)
-
+echo "---"
