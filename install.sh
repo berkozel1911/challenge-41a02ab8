@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO check the OS is Ubuntu 24.04 
+
 echo "Starting the local Kubernetes installer..."
 
 # Check if the script running as root user.
