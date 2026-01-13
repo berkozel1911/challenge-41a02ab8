@@ -22,3 +22,10 @@ apt update
 
 echo "Installing Helm"
 apt -y install helm
+
+echo "Adding Bitnami's Helm repo"
+helm repo add bitnami https://charts.bitnami.com/bitnami
+
+echo "Updating Helm repo caches..."
+helm repo update
+
