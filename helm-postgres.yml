@@ -1,0 +1,15 @@
+auth:
+  postgresPassword: root-secret
+  username: user
+  password: user-secret
+  database: appdb
+
+primary:
+  persistence:
+    enabled: true
+    size: 10Gi
+
+  service:
+    type: NodePort
+    nodePorts:
+      postgresql: 30432
