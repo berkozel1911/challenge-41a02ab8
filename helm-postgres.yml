@@ -1,8 +1,8 @@
 auth:
-  postgresPassword: root-secret
-  username: user
-  password: user-secret
-  database: appdb
+  postgresPassword: Password1.
+  username: dbuser
+  password: Password1.
+  database: db0
 
 primary:
   persistence:
