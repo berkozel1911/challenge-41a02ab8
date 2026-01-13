@@ -41,3 +41,14 @@ echo "---"
 echo "Checking k3s service after the installation."
 echo "k3s service status:" $(systemctl is-active k3s)
 echo "---"
+
+cat << EOF
+
+---
+Adding KUBECONFIG variable to .bashrc
+---
+
+EOF
+
+echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> ~/.bashrc
+source ~/.bashrc
