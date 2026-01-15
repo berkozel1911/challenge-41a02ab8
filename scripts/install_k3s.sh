@@ -45,10 +45,9 @@ echo "---"
 cat << EOF
 
 ---
-Adding KUBECONFIG variable to .bashrc
+Adding KUBECONFIG path variable to .bashrc
 ---
 
 EOF
 
 echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> ~/.bashrc
-source ~/.bashrc
