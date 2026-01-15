@@ -2,15 +2,8 @@
 
 set -e
 
-echo "Starting k3s installation..."
-
-cat << EOF
-
----
-Turning off the UFW firewall (recommended by k3s)
----
-
-EOF
+echo -e '\n[info] Starting the k3s installer...\n'
+echo -e '\n[info] Turning off the UFW firewall (recommended by k3s)\n'
 
 ufw disable
 # TODO allow ports
@@ -18,36 +11,17 @@ ufw disable
 # TODO check available memory
 # TODO check available CPU cores
 
-cat << EOF
+echo -e '\n[info] Ensuring curl is installed on system.\n'
 
----
-Ensuring curl is installed on system.
----
+apt install -y curl
 
-EOF
+echo -e "\n[info] Starting k3s' official installation script (ref: https://get.k3s.io)\n"
 
-apt update && apt install -y curl
-
-cat << EOF
-
----
-Starting k3s' official installation script (ref: https://get.k3s.io)
----
-
-EOF
 curl -sfL https://get.k3s.io | sh -
 
-echo "---"
-echo "Checking k3s service after the installation."
-echo "k3s service status:" $(systemctl is-active k3s)
-echo "---"
+echo -e "\n[info] Checking k3s service after the installation.\n"
+echo -e "\n[info] k3s service status:" $(systemctl is-active k3s) "\n"
 
-cat << EOF
-
----
-Adding KUBECONFIG path variable to .bashrc
----
-
-EOF
+echo -e "\n[info] Adding KUBECONFIG path variable to .bashrc"
 
 echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> ~/.bashrc
