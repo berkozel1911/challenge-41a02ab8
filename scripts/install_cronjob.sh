@@ -2,10 +2,12 @@
 
 set -e
 
-echo -e "\n[info] Installing PostgreSQL backup utilities.\n"
+echo -e "\n[info] Writing PostgreSQL periodic backup scripts.\n"
 
-echo -e "\n[info] Installing PostgreSQL backup cron job handler\n"
-cp -v ./cron/backup_pgsql.sh /usr/local/bin/backup_pgsql.sh
+mkdir -p $PGSQL_BACKUP_DIR
+
+echo "kubectl exec -it postgres-postgresql-0 -n $NAMESPACE_ID -- pg_dump -U postgres -d $PGSQL_ROOT_PW --file=/var/tmp/pgdump.sql" > /usr/local/bin/backup_pgsql.sh
+echo "kubectl cp ns0/postgres-postgresql-0:/var/tmp/pgdump.sql /var/backups/db0/pgsql" >> /usr/local/bin/backup_pgsql.sh
 
 chown -v root:root /usr/local/bin/backup_pgsql.sh 
 chmod 500 /usr/local/bin/backup_pgsql.sh
