@@ -1,9 +1,11 @@
-NAMESPACE_ID=ns0
+#!/usr/bin/env bash
 
-PGSQL_ROOT_PW=SuperSecretPassword
-PGSQL_USER=dbuser
-PGSQL_USER_PW=SuperSecretPassword
-PGSQL_DB_NAME=db0
-PGSQL_BACKUP_DIR=/var/backups/db0/pgsql
+export NAMESPACE_ID=ns0
 
-REDIS_ROOT_PW=SuperSecretPassword
+export PGSQL_ROOT_PW=SuperSecretPassword
+export PGSQL_USER=dbuser
+export PGSQL_USER_PW=SuperSecretPassword
+export PGSQL_DB_NAME=db0
+export PGSQL_BACKUP_DIR=/var/backups/db0/pgsql
+
+export REDIS_ROOT_PW=SuperSecretPassword
