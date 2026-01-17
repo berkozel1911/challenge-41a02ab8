@@ -1,8 +1,8 @@
 auth:
-  postgresPassword: Password1.
-  username: dbuser
-  password: Password1.
-  database: db0
+  postgresPassword: CHANGE_POSTGRES_ROOT_PW
+  username: CHANGE_POSTGRES_USERNAME
+  password: CHANGE_POSTGRES_USER_PW
+  database: CHANGE_DB_NAME
 
 primary:
   persistence:

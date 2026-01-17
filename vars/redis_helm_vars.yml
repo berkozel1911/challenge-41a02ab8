@@ -2,7 +2,7 @@ architecture: standalone
 
 auth:
   enabled: true
-  password: Password1.
+  password: CHANGE_REDIS_ROOT_PW
 
 master:
   persistence:
