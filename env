@@ -4,7 +4,6 @@ PGSQL_ROOT_PW=SuperSecretPassword
 PGSQL_USER=dbuser
 PGSQL_USER_PW=SuperSecretPassword
 PGSQL_DB_NAME=db0
-PGSQL_POD_NAME=postgres0
 PGSQL_BACKUP_DIR=/var/backups/db0/pgsql
 
 REDIS_ROOT_PW=SuperSecretPassword
