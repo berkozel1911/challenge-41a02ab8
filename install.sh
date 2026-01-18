@@ -3,13 +3,6 @@ set -e
 
 echo -e "\n[info] Starting the installer...\n"
 
-
-# Check if the script running as root user.
-if [[ $EUID -ne 0 ]]; then # Check running user does not have the UID as 0, which means running as whether root user.
-   echo "\n[ERROR] This script must be running as root. Exiting...\n" 
-   exit 1 # Terminate the script with exit code 1.
-fi
-
 echo -e "\n[info] Setting up environment variables.\n"
 
 source ./env.sh
@@ -36,11 +29,24 @@ echo -e '\n[info] Installing Helm\n'
 bash ./scripts/install_helm.sh
 
 # Run PostgreSQL installer
-echo -e '\n[info] Installing PostgreSQL inside the local k3s cluster\n'
-bash ./scripts/install_pgsql.sh $(readlink -f ./vars/postgres_helm_vars.yml)
+echo -e '\n[info] Installing PostgreSQL to the local k3s cluster\n'
+bash ./scripts/install_pgsql.sh $NAMESPACE_ID $(readlink -f ./vars/postgres_helm_vars.yml)
 
 # Run Redis installer
-echo -e '\n[info] Installing Redis inside the local k3s cluster\n'
-bash ./scripts/install_redis.sh $(readlink -f ./vars/redis_helm_vars.yml)
+echo -e '\n[info] Installing Redis to the local k3s cluster\n'
+bash ./scripts/install_redis.sh $NAMESPACE_ID $(readlink -f ./vars/redis_helm_vars.yml)
+
+# Install PostgreSQL backup cronjob.
+echo -e "\n[info] Installing PostgreSQL periodic backup scripts.\n"
+bash ./scripts/install_cronjob.sh
 
 echo -e '\n[info] Installation complete.\n'
+
+# Install test tools
+echo -e "\n[info] Installing test tools.\n"
+bash tests/test_utils.sh
+
+# Run Postgres & Redis connectivity
+echo -e "\n[info] Running connectivity tests.\n"
+bash tests/test_pgsql.sh
+bash tests/test_redis.sh
