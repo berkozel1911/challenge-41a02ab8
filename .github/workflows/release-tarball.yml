@@ -20,7 +20,7 @@ jobs:
           git archive \
             --format=tar.gz \
             --prefix="${REPO}/" \
-            -o "${REPO}.tar.gz" \
+            -o "$release-latest.tar.gz" \
             master
 
       - name: Create release
