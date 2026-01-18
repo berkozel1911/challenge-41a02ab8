@@ -1,0 +1,32 @@
+name: Release tarball
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create tarball
+        run: |
+          REPO="${GITHUB_REPOSITORY##*/}"
+          git archive \
+            --format=tar.gz \
+            --prefix="${REPO}/" \
+            -o "${REPO}.tar.gz" \
+            master
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: master
+          name: master
+          files: "*.tar.gz"
+
