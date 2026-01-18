@@ -5,11 +5,15 @@
 ## Introduction
 This script installs a small k3s cluster and a PostgreSQL & Redis server to that cluster.
 
+### Notes:
+- Attention! Do not manually edit values of variables in yml files at `vars/` directory starting with `CHANGE_`. These are special values like placeholders, will be changed by sed commands in `install.sh`. If you want to change these values, edit the values explained in `env.sh`. The `sed` commands in `install.sh` will change placeholders in `vars/*.yml`. Because same variables and values both used by Helm configuration files and Bash scripts, this is needed for change the values from one location if any configuration needed.
+
 ### Installation:
 
 - Download the package.
 - Extract and cd into the directory.
-- Run bash install.sh
+- Run `bash install.sh`
+
 
 ## TODO list:
 
