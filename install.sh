@@ -46,6 +46,9 @@ echo -e '\n[info] Installation complete.\n'
 echo -e "\n[info] Installing test tools.\n"
 bash tests/test_utils.sh
 
+# Sleep 5 seconds before running tests to wait k3s pods get ready.
+sleep 5
+
 # Run Postgres & Redis connectivity
 echo -e "\n[info] Running connectivity tests.\n"
 bash tests/test_pgsql.sh
