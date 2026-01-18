@@ -22,11 +22,11 @@ echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> /etc/profile
 
 # Run k3s installer
 echo -e '\n[info] Installing k3s\n'
-bash ./scripts/install_k3s.sh
+bash ./scripts/install_k3s.sh > /dev/null 2>&1
 
 # Run Helm installer
 echo -e '\n[info] Installing Helm\n'
-bash ./scripts/install_helm.sh
+bash ./scripts/install_helm.sh > /dev/null 2>&1
 
 # Run PostgreSQL installer
 echo -e '\n[info] Installing PostgreSQL to the local k3s cluster\n'
@@ -44,10 +44,11 @@ echo -e '\n[info] Installation complete.\n'
 
 # Install test tools
 echo -e "\n[info] Installing test tools.\n"
-bash tests/test_utils.sh
+bash tests/test_utils.sh > /dev/null 2>&1
 
 # Sleep 5 seconds before running tests to wait k3s pods get ready.
-sleep 5
+echo -e "\n[info] Waiting 60 seconds before running connectivity tests.\n"
+sleep 60
 
 # Run Postgres & Redis connectivity
 echo -e "\n[info] Running connectivity tests.\n"
