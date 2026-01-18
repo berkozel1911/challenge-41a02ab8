@@ -10,8 +10,9 @@ This script installs a small k3s cluster and a PostgreSQL & Redis server to that
 
 ### Installation:
 
-- Download the package.
+- Grab the latest release from Releases.
 - Extract and cd into the directory.
+- Make your configurations in `env.sh`
 - Run `bash install.sh`
 
 
