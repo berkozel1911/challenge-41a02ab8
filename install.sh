@@ -52,4 +52,4 @@ sleep 5
 # Run Postgres & Redis connectivity
 echo -e "\n[info] Running connectivity tests.\n"
 bash tests/test_pgsql.sh
-bash tests/test_redis.sh
+bash tests/test_redis.sh $REDIS_ROOT_PW
