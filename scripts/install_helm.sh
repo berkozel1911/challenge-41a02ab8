@@ -6,12 +6,15 @@ echo -e '\n[info] Starting Helm installer...\n'
 # Ensure prerequisite packages has been installed
 apt install -y curl gpg apt-transport-https
 
+# Get Helm's official GPG keys
 echo -e "\n[info] Installing Helm GPG keys...\n"
 curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | tee /usr/share/keyrings/helm.gpg > /dev/null
 
+# Add Helm repos
 echo -e "\n[info] Adding Helm repository to /etc/apt/sources.list...\n"
 echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
 
+# Run apt update before running Helm, suppress the apt-get output.
 echo -e "\n[info] Running apt update\n"
 apt update > /dev/null 2>&1
 

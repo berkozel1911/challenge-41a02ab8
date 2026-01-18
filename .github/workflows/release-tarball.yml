@@ -1,3 +1,4 @@
+# Simply creates a release-latest.tar.gz from recent master branch.
 name: Release tarball
 
 on:

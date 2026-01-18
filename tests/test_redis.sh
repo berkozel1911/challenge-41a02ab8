@@ -2,6 +2,9 @@
 
 set -e
 
+# Using Redis' official redis-cli tool, if the "if" block below fails, script will be terminated.
+
+
 echo -e "\n[info] Testing Redis connection...\n"
 
 # Takes first argument ($1) as Redis root password.

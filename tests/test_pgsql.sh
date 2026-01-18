@@ -2,6 +2,8 @@
 
 set -e
 
+# Using PostgreSQL's official pg_isready tool, if the "if" block below fails, script will be terminated.
+
 echo -e "\n[info] Testing PostgreSQL connection...\n"
 
 # Since this is a connection test from outside of the k3s cluster, 
