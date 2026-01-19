@@ -19,7 +19,7 @@ This script installs a small k3s cluster and a PostgreSQL & Redis server to that
 - These subscripts can take arguments passed from `install.sh` or use variables defined in `env.sh`, since `env.sh` is sourced by `install.sh`, then passed to subscripts.
 
 ### Simple CI implementation:
-- The instructions in .github/workflows/release-tarball.yml makes GitHub Actions to create a simple tarball package named release-latest.tar.gz from master branch when triggered.
+- The instructions in `.github/workflows/release-tarball.yml` makes GitHub Actions to create a simple tarball package named `release-latest.tar.gz` from master branch when triggered.
 
 ### Installation:
 
